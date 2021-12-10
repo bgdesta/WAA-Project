@@ -2,8 +2,8 @@
 
 .pnp
 .pnp.js
-.zip
-.rar
+/*.zip
+/*.rar
 
 # testing
 coverage

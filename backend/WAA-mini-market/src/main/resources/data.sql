@@ -1,0 +1,1 @@
+INSERT INTO USER (id, username, email, password) VALUES (1, 'admin', 'admin@miu.edu', 'password');
