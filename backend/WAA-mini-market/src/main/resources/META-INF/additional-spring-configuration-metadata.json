@@ -1,0 +1,8 @@
+{
+  "properties": [
+    {
+      "name": "miu.app.jwtExpirationMs",
+      "type": "java.lang.String",
+      "description": "Description for miu.app.jwtExpirationMs."
+  }
+] }

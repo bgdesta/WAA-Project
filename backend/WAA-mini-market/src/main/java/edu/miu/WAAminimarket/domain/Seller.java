@@ -1,4 +1,4 @@
-package edu.miu.WAAminimarket.domain;
-
-public class Seller {
-}
+//package edu.miu.WAAminimarket.domain;
+//
+//public class Seller {
+//}
