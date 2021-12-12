@@ -1,4 +1,39 @@
 package edu.miu.WAAminimarket.controller;
 
+import edu.miu.WAAminimarket.domain.Product;
+import edu.miu.WAAminimarket.service.ProductService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+@RequestMapping("/products")
 public class ProductController {
+
+    @Autowired
+    private ProductService productService;
+
+    @GetMapping
+    public List<Product> getAll(){
+        return productService.findAll();
+    }
+
+    // Register a new product
+    @PostMapping
+    public Product regProduct(@RequestBody Product prod){
+        return productService.save(prod);
+    }
+
+    // Update Product data
+    @PutMapping("/{id}")
+    public Product updateProd(@PathVariable Long id, @RequestBody Product stud){
+        return productService.updateProduct(id, stud);
+    }
+
+    // Delete Product
+    @DeleteMapping("/{id}")
+    public void deleteStudent(@PathVariable Long id){
+        productService.deleteById(id);
+    }
 }

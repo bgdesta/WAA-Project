@@ -1,5 +1,6 @@
 package edu.miu.WAAminimarket.domain;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
 
 import javax.persistence.*;
@@ -22,8 +23,9 @@ public class Role {
 //	@Column(length = 20)
 	private ERole name;
 
-	@OneToOne(mappedBy = "role")
-	User user;
+	@JsonManagedReference
+	@OneToMany(mappedBy = "role")
+	List<User> users;
 
 	public Role(ERole name){
 		this.name = name;
