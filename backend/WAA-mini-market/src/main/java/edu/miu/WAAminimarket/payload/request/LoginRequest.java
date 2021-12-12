@@ -1,7 +1,6 @@
 package edu.miu.WAAminimarket.payload.request;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 @Getter
 @Setter

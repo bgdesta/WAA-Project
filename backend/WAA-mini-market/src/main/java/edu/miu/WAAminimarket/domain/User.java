@@ -31,6 +31,8 @@ public class User {
     @JoinColumn(name = "role")
     private Role role;
 
+//    String role;
+
     public User(String username, String email, String password) {
         this.username = username;
         this.password = password;

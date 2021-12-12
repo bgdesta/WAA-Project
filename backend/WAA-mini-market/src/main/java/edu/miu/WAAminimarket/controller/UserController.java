@@ -1,4 +1,4 @@
-package edu.miu.Lab10.controller;
+package edu.miu.WAAminimarket.controller;
 
 public class UserController {
 }

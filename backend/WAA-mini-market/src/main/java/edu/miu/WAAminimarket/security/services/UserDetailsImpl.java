@@ -11,7 +11,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Objects;
-import java.util.stream.Collectors;
 
 public class UserDetailsImpl implements UserDetails {
 	private static final long serialVersionUID = 1L;
@@ -37,12 +36,9 @@ public class UserDetailsImpl implements UserDetails {
 	}
 
 	public static UserDetailsImpl build(User user) {
-//		List<GrantedAuthority> authority = new SimpleGrantedAuthority(user.getRole().getName().name()).toList();
-
 		List<GrantedAuthority> authority = new ArrayList<>();
 		authority.add(new SimpleGrantedAuthority(user.getRole().getName().name()));
-//				new SimpleGrantedAuthority(user.getRole().getName().name()))
-////				.collect(Collectors.toList());
+//		authority.add(new SimpleGrantedAuthority(user.getRole()));
 
 		return new UserDetailsImpl(
 				user.getId(),
@@ -51,18 +47,6 @@ public class UserDetailsImpl implements UserDetails {
 				user.getPassword(),
 				authority);
 	}
-//	public static UserDetailsImpl build(User user) {
-//		List<GrantedAuthority> authorities = user.getRoles().stream()
-//				.map(role -> new SimpleGrantedAuthority(role.getName().name()))
-//				.collect(Collectors.toList());
-//
-//		return new UserDetailsImpl(
-//				user.getId(),
-//				user.getUsername(),
-//				user.getEmail(),
-//				user.getPassword(),
-//				authorities);
-//	}
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
