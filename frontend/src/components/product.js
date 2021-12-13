@@ -1,117 +1,111 @@
-import React, { useState,setState } from "react";
+import React, { useState } from "react";
 import axios from "axios";
+import Form from "react-validation/build/form";
+import Input from "react-validation/build/input";
+import CheckButton from "react-validation/build/button";
 
 export default function Product() {
+  const [product, setProduct] = useState({
+    prodname: "",
+    prodmodel: "",
+    serialnum: "",
+    description: "",
+    unitprice: 0,
+  });
 
-    const [product, setProduct] = useState({ category: "", productname: "", quantity: 0, unitprice: 0 });
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setProduct((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
+  };
 
-    const handleChange = e => {
-        const { name, value } = e.target;
-        setProduct(prevState => ({
-            ...prevState,
-            [name]: value
-        }));
+  function productRegistrationHandler(event) {
+    event.preventDefault();
+
+    let productData = {
+      name: product.prodname,
+      model: product.prodmodel,
+      serialnum: product.serialnum,
+      description: product.description,
+      unitprice: parseFloat(product.unitprice),
     };
+    console.log("Supplied data: " + JSON.stringify(productData));
+    axios
+      .post("http://localhost:8080/products", productData)
+      .then((res) => {
+        console.log(res.status);
+        console.log(res.data);
+      })
+      .catch((error) => {
+        console.log("Failed to write data to DB! " + error);
+      });
+  }
 
-
-    function productRegistrationHandler(event) {
-         event.preventDefault();
-
-    
-        let productData = {
-          catagory: product.catagory,
-          Productname: product.ProductName,
-          quantity: parseInt(product.quantity),
-          unitprice: parseFloat(product.unitprice),
-        };
-    
-        axios
-          .post("http://localhost:8080/product", productData)
-          .then((res) => {
-            console.log(res.status);
-            console.log(res.data);
-          })
-          .catch((error) => {
-            console.log("Failed to write data to DB! " + error);
-          });
-      }
-
-
-    return (
-        <div >
-            <div>
-                <h3 className="h3class">product Registration</h3>
-            </div>
-
-            <div className="divbuttommargin">
-                <label className="labels">Product category:</label>
-                <input 
-                    className="inputclass"
-                    value={product.category}
-                    type="text"
-                    onChange={handleChange}
-                    name="category"
-                />
-
-            </div>
-            <div className="divbuttommargin">
-                <label className="labels">Product Name:</label>
-                
-                <input 
-                    className="inputclass"
-                    value={product.productname}
-                    type="text"
-                    onChange={handleChange}
-                    name="productname"
-                />
-
-            </div>
-            <div className="divbuttommargin" >
-            <label className="labels">Quantity:</label>
-                
-                <input 
-                    className="inputclass"
-                    value={product.quantity}
-                    type="text"
-                    onChange={handleChange}
-                    name="quantity"
-                />
-            </div>
-
-            <div className="divbuttommargin">
-                <label className="labels">Unit Price:</label>
-                
-                <input
-                    className="inputclass"
-                    value={product.unitPrice}
-                    type="text"
-                    onChange={handleChange}
-                    name="unitPrice"
-                />
-
-            </div>
-
-            <div>
-                <input
-
-                className="clickbutton"            
-                value="Save Product"
-                type="button"
-                onClick = {productRegistrationHandler}
-                
-            />
-                
-               
-            </div>
-
-            {/* <div >
-                <button className="clickbutton"
-                    onClick={() => { productRegistrationHandler() }}
-                >
-                    Save Product
-                </button>
-
-            </div> */}
+  return (
+    <div className="container">
+      <div>
+        <h2>Product Registration</h2>
+      </div>
+      <Form>
+        <div className="form-group">
+          <label htmlFor="prodname">Product Name</label>
+          <Input
+            type="text"
+            className="form-control"
+            name="prodname"
+            onChange={handleChange}
+          />
         </div>
-    )
+
+        <div className="form-group">
+          <label htmlFor="prodmodel">Model</label>
+          <Input
+            type="text"
+            className="form-control"
+            name="prodmodel"
+            onChange={handleChange}
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="serialnum">Serial Number</label>
+          <Input
+            type="text"
+            className="form-control"
+            name="serialnum"
+            onChange={handleChange}
+          />
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="unitprice">Unit Price</label>
+          <Input
+            type="text"
+            className="form-control"
+            name="unitprice"
+            onChange={handleChange}
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="description">Description</label>
+          <Input
+            type="text"
+            className="form-control"
+            name="description"
+            onChange={handleChange}
+          />
+        </div>
+        <br />
+        <div className="btn btn-primary prod-btn">
+          <Input
+            className="prod-btn"
+            value="Save Product"
+            type="submit"
+            onClick={productRegistrationHandler}
+          />
+        </div>
+      </Form>
+    </div>
+  );
 }

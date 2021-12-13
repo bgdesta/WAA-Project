@@ -23,6 +23,7 @@ public class ProductController {
     // Register a new product
     @PostMapping
     public Product regProduct(@RequestBody Product prod){
+
         return productService.save(prod);
     }
 

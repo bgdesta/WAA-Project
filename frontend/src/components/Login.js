@@ -99,14 +99,10 @@ const Login = (props) => {
               validations={[required]}
             />
           </div>
+          <br />
 
-          <div className="form-group">
-            <button className="btn btn-primary btn-block" disabled={loading}>
-              {loading && (
-                <span className="spinner-border spinner-border-sm"></span>
-              )}
-              <span>Login</span>
-            </button>
+          <div className="btn btn-primary prod-btn">
+            <Input className="prod-btn" value="Login" type="submit" />
           </div>
 
           {message && (
