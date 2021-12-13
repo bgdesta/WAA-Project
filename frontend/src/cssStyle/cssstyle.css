@@ -18,8 +18,6 @@
     
 }
 
-
-
 .divbuttommargin {
   margin-bottom: 5px;
 }
@@ -56,6 +54,17 @@
 
 .h3class{
     margin-left: 100px;
+}
+
+span{
+    margin-left: 100px;
+}
+
+.buttonCart{
+    margin-left: 10px;
+    display: inline-block;
+  width: 150px;
+  
 }
 
 
