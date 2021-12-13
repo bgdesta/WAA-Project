@@ -44,7 +44,7 @@ export default function Product() {
   }
 
   return (
-    <div className="container">
+    <div className="container card card-container">
       <div>
         <h2>Product Registration</h2>
       </div>
