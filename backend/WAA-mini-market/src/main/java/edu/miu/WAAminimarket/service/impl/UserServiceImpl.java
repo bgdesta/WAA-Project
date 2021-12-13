@@ -1,5 +1,6 @@
 package edu.miu.WAAminimarket.service.impl;
 
+import edu.miu.WAAminimarket.domain.Product;
 import edu.miu.WAAminimarket.domain.User;
 import edu.miu.WAAminimarket.repository.UserRepository;
 import edu.miu.WAAminimarket.service.UserService;
@@ -17,5 +18,12 @@ public class UserServiceImpl implements UserService {
     @Override
     public  List<User> findAllPendingSellers(String status) {
         return userRepository.findAllPendingSellers(status);
+    }
+
+    @Override
+    public User updateUser(Long id, User user) {
+        User u = userRepository.findById(id).get();
+        u.setStatus("ACTIVE");
+        return userRepository.save(u);
     }
 }
