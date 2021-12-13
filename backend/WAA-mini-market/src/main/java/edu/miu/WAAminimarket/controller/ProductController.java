@@ -9,6 +9,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/products")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class ProductController {
 
     @Autowired
@@ -27,8 +28,8 @@ public class ProductController {
 
     // Update Product data
     @PutMapping("/{id}")
-    public Product updateProd(@PathVariable Long id, @RequestBody Product stud){
-        return productService.updateProduct(id, stud);
+    public Product updateProd(@PathVariable Long id, @RequestBody Product prod){
+        return productService.updateProduct(id, prod);
     }
 
     // Delete Product

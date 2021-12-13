@@ -120,11 +120,11 @@ const App = () => {
         </ul>
       </nav>
 
-      {currentUser ? (
+      {currentUser && currentUser.roles[0] === "ROLE_ADMIN" ? (
         <div className="navbar-nav ml-auto">
           <li className="nav-item">
             <Link to={"/admin"} className="nav-link">
-              {currentUser.roles}
+              Verify Sellers
             </Link>
           </li>
           <li className="nav-item">

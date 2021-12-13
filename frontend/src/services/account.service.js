@@ -8,6 +8,9 @@ const getPendingSellerAccounts = () => {
   return axios.get(API_URL + "/sellers/pending", { headers: authHeader() });
 };
 
+const verifySellerAccounts = (id) => {
+  return axios.put(API_URL + "/sellers/" + id, { headers: authHeader() });
+};
 const getPublicContent = () => {
   return axios.get(API_URL + "all");
 };
@@ -30,4 +33,5 @@ export default {
   getModeratorBoard,
   getAdminBoard,
   getPendingSellerAccounts,
+  verifySellerAccounts,
 };

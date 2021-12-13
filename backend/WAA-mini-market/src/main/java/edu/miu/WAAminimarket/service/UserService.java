@@ -7,4 +7,6 @@ import java.util.Optional;
 
 public interface UserService {
    List<User> findAllPendingSellers(String status);
+
+   User updateUser(Long id, User user);
 }
