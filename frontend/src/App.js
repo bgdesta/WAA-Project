@@ -19,6 +19,7 @@ import { history } from "./helpers/history";
 
 // import AuthVerify from "./common/AuthVerify";
 import EventBus from "./common/EventBus";
+import AdminLandingPage from "./components/AdminLandingPage";
 
 const App = () => {
   // const [showModeratorBoard, setShowModeratorBoard] = useState(false);
@@ -96,6 +97,35 @@ const App = () => {
         {currentUser ? (
           <div className="navbar-nav ml-auto">
             <li className="nav-item">
+              <Link to={"/admin"} className="nav-link">
+                {currentUser.roles}
+              </Link>
+            </li>
+            <li className="nav-item">
+              <a href="/login" className="nav-link" onClick={logOut}>
+                LogOut
+              </a>
+            </li>
+          </div>
+        ) : (
+          <div className="navbar-nav ml-auto">
+            <li className="nav-item">
+              <Link to={"/login"} className="nav-link">
+                Login
+              </Link>
+            </li>
+
+            <li className="nav-item">
+              <Link to={"/register"} className="nav-link">
+                Sign Up
+              </Link>
+            </li>
+          </div>
+        )}
+
+        {/* {currentUser ? (
+          <div className="navbar-nav ml-auto">
+            <li className="nav-item">
               <Link to={"/profile"} className="nav-link">
                 {currentUser.username}
               </Link>
@@ -120,7 +150,7 @@ const App = () => {
               </Link>
             </li>
           </div>
-        )}
+        )} */}
       </nav>
       <Routes>
         {/* <div className="container mt-3"> */}
@@ -129,6 +159,8 @@ const App = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/profile" element={<Profile />} />
+        <Route path="/admin" element={<AdminLandingPage />} />
+
         {/* <Route path="/user" element={BoardUser} />
         <Route path="/mod" element={BoardModerator} />
         <Route path="/admin" element={BoardAdmin} /> */}

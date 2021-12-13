@@ -1,8 +1,23 @@
+body table {
+  margin: auto;
+  font-family: monospace, "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  text-align: center;
+  font-size: 16px;
+}
+button {
+  font-size: 16px;
+  font-family: monospace;
+  color: blue;
+}
 label {
   display: block;
   margin-top: 10px;
 }
-
+.container {
+  margin: auto;
+  text-align: center;
+}
 .card-container.card {
   max-width: 350px !important;
   padding: 40px 40px;
