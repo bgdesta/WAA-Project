@@ -13,47 +13,6 @@ export default function Buyer() {
 
     const [purchase, setPurchase] = useState({ name: "", shippingaddress: "", billingaddress: "" });
 
-
-    // const [items, setItems] = useState([
-    //     { itemName: 'iPhoe pro 13', quantity: 1, isSelected: false },
-    //     { itemName: 'MacBook Pro', quantity: 3, isSelected: true },
-    //     { itemName: 'Imac', quantity: 2, isSelected: false },
-    // ]);
-
-    // const [inputValue, setInputValue] = useState('');
-
-    // const [totalItemCount, setTotalItemCount] = useState(6);
-    // const addItem = "";
-
-    // const handleAddButtonClick = (addItem, price) => {
-    //     const newItem = {
-    //         itemName: addItem,
-    //         quantity: 1,
-    //         price: price,
-    //         isSelected: false,
-    //     };
-    // }
-
-    // const newItems = [...items, newItem];
-
-    // setItems(newItems);
-
-
-
-    // const [items, setItems] = useState([]);
-
-    // // handle click event of the button to add item
-    // const addMoreItem = (e1, e2) => {
-
-    //     setItems(prevItems => [...prevItems, {
-    //         id: prevItems.length,
-    //         productname: e1,
-    //         price: e2
-
-    //     }]);
-    // }
-
-
     const handleChange = e => {
         const { name, value } = e.target;
         setPurchase(prevState => ({
@@ -85,16 +44,6 @@ export default function Buyer() {
             });
     }
 
-
-
-
-
-
-
-    /////////////////////////////////////////////////////////
-    // HINT: each "item" in our list names a name,
-	// a boolean to tell if its been completed, and a quantity
-
 	const [items, setItems] = useState([
 		{ itemName: 'iPhoe pro 13', quantity: 1, isSelected: false },
 		{ itemName: 'MacBook Pro', quantity: 3, isSelected: true },
@@ -116,47 +65,9 @@ export default function Buyer() {
 		const newItems = [...items, newItem];
         console.log(newItems);
 
-		//setItems(newItems);
-		//setInputValue('');
-		//calculateTotal();
+	
 	};
-
-	// const handleQuantityIncrease = (index) => {
-	// 	const newItems = [...items];
-
-	// 	newItems[index].quantity++;
-
-	// 	setItems(newItems);
-	// 	calculateTotal();
-	// };
-
-	// const handleQuantityDecrease = (index) => {
-	// 	const newItems = [...items];
-
-	// 	newItems[index].quantity--;
-
-	// 	setItems(newItems);
-	// 	calculateTotal();
-	// };
-
-	// const toggleComplete = (index) => {
-	// 	const newItems = [...items];
-
-	// 	newItems[index].isSelected = !newItems[index].isSelected;
-
-	// 	setItems(newItems);
-	// };
-
-	// const calculateTotal = () => {
-	// 	const totalItemCount = items.reduce((total, item) => {
-	// 		return total + item.quantity;
-	// 	}, 0);
-
-	// 	setTotalItemCount(totalItemCount);
-	// };
-    ////////////////////////////////////////////////////////////////////////
-
-
+	
     return (
         <div>
             <div>
@@ -305,15 +216,6 @@ export default function Buyer() {
                 Place Order
                 </button> 
 
-                {/* <input
-
-
-                    className="clickbutton"
-                    value="Place Order "
-                    type="submit"
-                    onClick ={purchaseHandler}
-
-                /> */}
             </div>
         </div>
     )
