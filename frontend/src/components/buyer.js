@@ -1,6 +1,13 @@
 import React, { useState } from "react";
 import axios from "axios";
 import DisplayCart from './displayCart'
+import iphone11 from '../images/iphone11.jpg';
+import '../cssStyle/cssstyle.css'
+import macbookpro from '../images/macbookpro.jpg'
+import iphone13 from "../images/iphone13.jpg"
+import samsung  from '../images/samsung-galaxy-m51.jpg'
+import macmin  from '../images/mac-min.jpg'
+import applewatch  from '../images/applewatch.jpg'
 
 export default function Buyer() {
 
@@ -194,42 +201,84 @@ export default function Buyer() {
             </div>        
 
             <div className="divbuttommargin">
-                <span>product Name: iPhone pro   price: 2000</span>
+            <img src={iphone13} alt = "logo"></img>
+                
+                <p className="gclass">product Name: iPhone 13 Pro: Smooth, responsive Super Retina XDR display with ProMotion. Huge camera system upgrade for dramatic new possibilities. Exceptional durability. 
+                The ultrafast A15 Bionic chip. And breakthrough battery life. Let’s Pro. </p>
+                <a href="https://www.apple.com/iphone-13-pro/">Learn more </a>
+
+                <p className="gclass">price: 2500</p>
+
+                
                 <button className="buttonCart" onClick={handleAddButtonClick("iphone 13", 2000)}>
                     Add to Cart
                 </button>
             </div>
 
             <div className="divbuttommargin">
-                <span>product Name: Samsung    price: 100</span>
+                
+                <img src={samsung} alt = "logo"></img>
+                <p className="gclass">product Name: Samsung Galaxy M31 </p>
+                <p className="gclass">With the Samsung Galaxy M31 - Samsung re-introduces the powerful 6000 mAh battery along with all round features comprising of a 64 MP rear camera in Quad camera set up and an immersive samoled screen.
+
+                    Screen Size: 6.4″, Weight: 6.74 oz, Display Resolution:2340 x 1080, Storage Capacity: 128 GB</p>
+                    <a href="https://www.gsmarena.com/samsung_galaxy_m31-10079.php/">Learn more </a>
+                    <p className="gclass">price: 1500</p>
+                
                 <button className="buttonCart" onClick={handleAddButtonClick("Samsung", 2000)}>
                     Add to Cart
                 </button>
             </div>
 
             <div className="divbuttommargin">
-                <span>product Name: macbookpro    price: 2500</span>
+            
+                <img src={macbookpro} alt = "logo"></img>
+                
+                <p className="gclass">product Name: MacBook Pro </p>
+                <p className="gclass">The Apple M1 chip gives the 13‑inch MacBook Pro speed and power beyond belief. With up to 2.8x CPU performance. 
+                    Up to 5x the graphics speed. Our most advanced Neural Engine for up to 11x faster machine learning. And up to 20 
+                    hours of battery life so you can go all day. It’s our most popular pro notebook, taken to a whole new level.</p>
+                    <a href="https://www.apple.com/macbook-pro-13/">Learn more </a>
+                    <p className="gclass">price: 2500</p>
+               
                 <button className="buttonCart" onClick={handleAddButtonClick("iphone 13", 2000)}>
                     Add to Cart
                 </button>
             </div>
 
             <div className="divbuttommargin">
-                <span>product Name: iPhone 13    price: 2000</span>
+                <img src={applewatch} alt = "logo"></img>
+                
+                <p className="gclass">product Name: Apple Watch:Graphite Stainless Steel Case with Milanese Loop
+                    The stainless steel case is durable and polished to a shiny, mirror-like finish.
+
+                    The Milanese Loop is made from a smooth stainless steel mesh that’s fully magnetic, so it’s infinitely 
+                    adjustable for a perfect fit. </p>
+                    <p className="gclass">Connectivity What’s the difference between GPS and GPS + Cellular? GPS + Cellular
+                    Make calls and send messages with just your Apple Watch. Works with Family Setup.</p>
+                    <a href="https://www.apple.com/watch/">Learn more </a>
+                <p className="gclass">price: 500</p>
                 <button className="buttonCart" onClick={handleAddButtonClick("iphone 13", 2000)}>
                     Add to Cart
                 </button>
             </div>
 
             <div className="divbuttommargin">
-                <span>product Name: iPhone 13    price: 2000</span>
+                <img src={iphone11} alt = "logo"></img>
+                
+                <p className="gclass">product Name: iPhone 13 </p>
+                <p className="gclass">price: 2000</p>
                 <button className="buttonCart" onClick={handleAddButtonClick("iphone 13", 2000)}>
                     Add to Cart
                 </button>
             </div>
 
             <div className="divbuttommargin">
-                <span>product Name: iPhone 13    price: 2000</span>
+                <img src={macmin} alt = "logo"></img>
+                
+                <p className="gclass">product Name: Mac min: </p>
+                <p className="gclass">price: 100</p>
+                
                 <button className="buttonCart" onClick={handleAddButtonClick("iphone 13", 2000)}>
                     Add to Cart
                 </button>

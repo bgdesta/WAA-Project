@@ -3,7 +3,7 @@ import axios from "axios";
 
 export default function Product() {
 
-    const [product, setProduct] = useState({ category: "", productname: "", quantity: 0, unitPrice: 0 });
+    const [product, setProduct] = useState({ category: "", productname: "", quantity: 0, unitprice: 0 });
 
     const handleChange = e => {
         const { name, value } = e.target;
@@ -19,10 +19,10 @@ export default function Product() {
 
     
         let productData = {
-          catagory: setProduct.catagory,
-          Productname: setProduct.ProductName,
-          quantity: parseInt(setProduct.quantity),
-          unitprice: parseFloat(setProduct.unitprice),
+          catagory: product.catagory,
+          Productname: product.ProductName,
+          quantity: parseInt(product.quantity),
+          unitprice: parseFloat(product.unitprice),
         };
     
         axios
@@ -97,7 +97,7 @@ export default function Product() {
                 className="clickbutton"            
                 value="Save Product"
                 type="button"
-                onChange={productRegistrationHandler}
+                onClick = {productRegistrationHandler}
                 
             />
                 
