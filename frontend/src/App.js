@@ -66,123 +66,69 @@ const App = () => {
 
   return (
     <Router>
-      {/* <nav className="navbar navbar-expand navbar-dark bg-dark"> */}
-      {/* <Link to={"/"} className="navbar-brand">
-          MIU
-        </Link>
-        <div className="navbar-nav mr-auto">
-          <li className="nav-item">
-            <Link to={"/home"} className="nav-link">
-              Home
-            </Link>
-          </li>
-
-          {showModeratorBoard && (
-            <li className="nav-item">
-              <Link to={"/mod"} className="nav-link">
-                Moderator Board
-              </Link>
-            </li>
-          )}
-
-          {showAdminBoard && (
-            <li className="nav-item">
-              <Link to={"/admin"} className="nav-link">
-                Admin Board
-              </Link>
-            </li>
-          )}
-
-          {currentUser && (
-            <li className="nav-item">
-              <Link to={"/user"} className="nav-link">
-                User
-              </Link>
-            </li>
-          )}
-        </div> */}
-
       <nav className="navs">
         <ul className="nav-links">
-          <Link style={navStyle} to="/login">
-           
-            <li>Login </li>
-          </Link>
-          <Link style={navStyle} to="/register">
-            <li> Signup </li>
-          </Link>
-          <Link style={navStyle} to="/product">
-            <li> product </li>
-          </Link>
-          <Link style={navStyle} to="/purchase">
-            <li> purchase </li>
-          </Link>
+          {currentUser ? (
+            <div className="nav-item">
+              <a href="/login" style={navStyle} onClick={logOut}>
+                <li>LogOut</li>
+              </a>
+            </div>
+          ) : (
+            <div>
+              <div>
+                <Link to={"/login"} style={navStyle} className="nav-item">
+                  Login
+                </Link>
+                <Link to={"/register"} style={navStyle}>
+                  Sign Up
+                </Link>
+              </div>
+            </div>
+          )}
+
+          {currentUser && currentUser.roles[0] === "ROLE_ADMIN" ? (
+            <div className="nav-item">
+              <Link to={"/admin"} className="nav-link" style={navStyle}>
+                Verify Sellers
+              </Link>
+            </div>
+          ) : (
+            <div></div>
+          )}
+
+          {currentUser && currentUser.roles[0] === "ROLE_SELLER" ? (
+            <div className="nav-item">
+              <Link
+                to={"/product"}
+                className="nav-link"
+                style={navStyle}
+                nav-item
+              >
+                Register Product
+              </Link>
+            </div>
+          ) : (
+            <div></div>
+          )}
+
+          {currentUser && currentUser.roles[0] === "ROLE_BUYER" ? (
+            <div>
+              <Link to={"/order"} style={navStyle} className="nav-item">
+                Product Orders
+              </Link>
+
+              <Link to={"/purchase"} className="nav-link" style={navStyle}>
+                Purchase Products
+              </Link>
+            </div>
+          ) : (
+            <div></div>
+          )}
         </ul>
       </nav>
 
-      {currentUser && currentUser.roles[0] === "ROLE_ADMIN" ? (
-        <div className="navbar-nav ml-auto">
-          <li className="nav-item">
-            <Link to={"/admin"} className="nav-link">
-              Verify Sellers
-            </Link>
-          </li>
-          <li className="nav-item">
-            <a href="/login" className="nav-link" onClick={logOut}>
-              LogOut
-            </a>
-          </li>
-        </div>
-      ) : (
-        <div className="navbar-nav ml-auto">
-          <li className="nav-item">
-            <Link to={"/login"} className="nav-link">
-              Login
-            </Link>
-          </li>
-
-          <li className="nav-item">
-            <Link to={"/register"} className="nav-link">
-              Sign Up
-            </Link>
-          </li>
-        </div>
-      )}
-
-      {/* {currentUser ? (
-          <div className="navbar-nav ml-auto">
-            <li className="nav-item">
-              <Link to={"/profile"} className="nav-link">
-                {currentUser.username}
-              </Link>
-            </li>
-            <li className="nav-item">
-              <a href="/login" className="nav-link" onClick={logOut}>
-                LogOut
-              </a>
-            </li>
-          </div>
-        ) : (
-          <div className="navbar-nav ml-auto">
-            <li className="nav-item">
-              <Link to={"/login"} className="nav-link">
-                Login
-              </Link>
-            </li>
-
-            <li className="nav-item">
-              <Link to={"/register"} className="nav-link">
-                Sign Up
-              </Link>
-            </li>
-          </div>
-        )} */}
-      {/* </nav> */}
-      {/* */}
       <Routes>
-        {/* <div className="container mt-3"> */}
-        {/* <Route path={["/", "/home"]} element={Home} /> */}
-
         <Route path="/login" element={<Login />} />
         <Route path="/logout" element={<logout />} />
         <Route path="/admin" element={<AdminLandingPage />} />
@@ -190,12 +136,6 @@ const App = () => {
         <Route path="/product" element={<Product />} />
         <Route path="/purchase" element={<Purchase />} />
         <Route path="/profile" element={<Profile />} />
-
-        {/* <Route path="/user" element={BoardUser} />
-        <Route path="/mod" element={BoardModerator} />
-        <Route path="/admin" element={BoardAdmin} /> */}
-
-        {/* </div> */}
       </Routes>
     </Router>
   );
