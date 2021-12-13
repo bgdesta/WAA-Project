@@ -21,6 +21,10 @@ import { history } from "./helpers/history";
 import EventBus from "./common/EventBus";
 import AdminLandingPage from "./components/AdminLandingPage";
 
+import "./cssStyle/cssstyle.css";
+import Product from "./components/product";
+import Purchase from "./components/buyer";
+
 const App = () => {
   // const [showModeratorBoard, setShowModeratorBoard] = useState(false);
   // const [showAdminBoard, setShowAdminBoard] = useState(false);
@@ -56,10 +60,14 @@ const App = () => {
     };
   }, [currentUser, logOut]);
 
+  const navStyle = {
+    color: "white",
+  };
+
   return (
     <Router>
-      <nav className="navbar navbar-expand navbar-dark bg-dark">
-        {/* <Link to={"/"} className="navbar-brand">
+      {/* <nav className="navbar navbar-expand navbar-dark bg-dark"> */}
+      {/* <Link to={"/"} className="navbar-brand">
           MIU
         </Link>
         <div className="navbar-nav mr-auto">
@@ -94,36 +102,56 @@ const App = () => {
           )}
         </div> */}
 
-        {currentUser ? (
-          <div className="navbar-nav ml-auto">
-            <li className="nav-item">
-              <Link to={"/admin"} className="nav-link">
-                {currentUser.roles}
-              </Link>
-            </li>
-            <li className="nav-item">
-              <a href="/login" className="nav-link" onClick={logOut}>
-                LogOut
-              </a>
-            </li>
-          </div>
-        ) : (
-          <div className="navbar-nav ml-auto">
-            <li className="nav-item">
-              <Link to={"/login"} className="nav-link">
-                Login
-              </Link>
-            </li>
+      <nav className="navs">
+        <ul className="nav-links">
+          <Link style={navStyle} to="/login">
+            {" "}
+            <li>Login </li>
+          </Link>
+          <Link style={navStyle} to="/register">
+            <li> Signup </li>
+          </Link>
+          <Link style={navStyle} to="/product">
+            {" "}
+            <li> product </li>
+          </Link>
+          <Link style={navStyle} to="/purchase">
+            {" "}
+            <li> purchase </li>
+          </Link>
+        </ul>
+      </nav>
 
-            <li className="nav-item">
-              <Link to={"/register"} className="nav-link">
-                Sign Up
-              </Link>
-            </li>
-          </div>
-        )}
+      {currentUser ? (
+        <div className="navbar-nav ml-auto">
+          <li className="nav-item">
+            <Link to={"/admin"} className="nav-link">
+              {currentUser.roles}
+            </Link>
+          </li>
+          <li className="nav-item">
+            <a href="/login" className="nav-link" onClick={logOut}>
+              LogOut
+            </a>
+          </li>
+        </div>
+      ) : (
+        <div className="navbar-nav ml-auto">
+          <li className="nav-item">
+            <Link to={"/login"} className="nav-link">
+              Login
+            </Link>
+          </li>
 
-        {/* {currentUser ? (
+          <li className="nav-item">
+            <Link to={"/register"} className="nav-link">
+              Sign Up
+            </Link>
+          </li>
+        </div>
+      )}
+
+      {/* {currentUser ? (
           <div className="navbar-nav ml-auto">
             <li className="nav-item">
               <Link to={"/profile"} className="nav-link">
@@ -151,15 +179,19 @@ const App = () => {
             </li>
           </div>
         )} */}
-      </nav>
+      {/* </nav> */}
+      {/* */}
       <Routes>
         {/* <div className="container mt-3"> */}
         {/* <Route path={["/", "/home"]} element={Home} /> */}
 
         <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/profile" element={<Profile />} />
+        <Route path="/logout" element={<logout />} />
         <Route path="/admin" element={<AdminLandingPage />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/product" element={<Product />} />
+        <Route path="/purchase" element={<Purchase />} />
+        <Route path="/profile" element={<Profile />} />
 
         {/* <Route path="/user" element={BoardUser} />
         <Route path="/mod" element={BoardModerator} />
