@@ -203,7 +203,8 @@ export default function Buyer() {
             <div className="divbuttommargin">
             <img src={iphone13} alt = "logo"></img>
                 
-                <p className="gclass">product Name: iPhone 13 Pro: Smooth, responsive Super Retina XDR display with ProMotion. Huge camera system upgrade for dramatic new possibilities. Exceptional durability. 
+                <p className="gclass">product Name: iPhone 13 Pro</p>
+                <p className="gclass"> <b>Features:</b>  Smooth, responsive Super Retina XDR display with ProMotion. Huge camera system upgrade for dramatic new possibilities. Exceptional durability. 
                 The ultrafast A15 Bionic chip. And breakthrough battery life. Let’s Pro. </p>
                 <a href="https://www.apple.com/iphone-13-pro/">Learn more </a>
 
@@ -266,8 +267,13 @@ export default function Buyer() {
             <div className="divbuttommargin">
                 <img src={iphone11} alt = "logo"></img>
                 
-                <p className="gclass">product Name: iPhone 13 </p>
-                <p className="gclass">price: 2000</p>
+                <p className="gclass">product Name: iPhone 11 </p>
+                <p className="gclass"><b>Features: </b>A new dual-camera system captures more of what you see and love. 
+                    The fastest chip ever in a smartphone and all-day battery life let you do more
+                     and charge less.¹ And it features the highest-quality video in a smartphone, so your memories look better than ever. The iPhone 11 comes in 6 stunning color options and features a gorgeous 6.1-inch all-screen Liquid Retina LCD.
+                     Get the most of it with Verizon, the nation's most awarded network.</p>
+                     <a href="https://www.apple.com/iphone-11/specs/">Learn more </a>
+                     <p className="gclass">price: 1000</p>
                 <button className="buttonCart" onClick={handleAddButtonClick("iphone 13", 2000)}>
                     Add to Cart
                 </button>
@@ -277,7 +283,15 @@ export default function Buyer() {
                 <img src={macmin} alt = "logo"></img>
                 
                 <p className="gclass">product Name: Mac min: </p>
-                <p className="gclass">price: 100</p>
+                <p className="gclass"> Apple Mac Mini Desktop Intel Core i5 2.6GHz (MGEN2LL/A ) 8GB Memory,
+                    1TB Hard Drive, ThunderBolt (Renewed)</p>
+                    <p className="gclass"><b>Fearures: </b>Eighth-generation quad-core Intel Core i3 Intel UHD Graphics 630,
+                8GB 2666MHz DDR4, Ultrafast SSD storage, Four Thunderbolt 3 (USB-C) ports, one HDMI 2.0 port, and two USB 3 ports
+                Gigabit Ethernet and 802.11ac Wi-Fi The latest version of macOS</p> 
+                
+                <a href="https://www.apple.com/iphone-11/specs/">Learn more </a>
+                <p className="gclass">price: 500</p>
+
                 
                 <button className="buttonCart" onClick={handleAddButtonClick("iphone 13", 2000)}>
                     Add to Cart
@@ -286,14 +300,20 @@ export default function Buyer() {
 
 
             <div>
-                <input
+
+                <button className="clickbutton" onClick={purchaseHandler}>
+                Place Order
+                </button> 
+
+                {/* <input
+
 
                     className="clickbutton"
                     value="Place Order "
-                    type="button"
-                    onChange={purchaseHandler}
+                    type="submit"
+                    onClick ={purchaseHandler}
 
-                />
+                /> */}
             </div>
         </div>
     )
