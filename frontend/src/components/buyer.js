@@ -1,24 +1,50 @@
 import React, { useState } from "react";
 import axios from "axios";
+import DisplayCart from './displayCart'
 
-function Buyer() {
+export default function Buyer() {
 
     const [purchase, setPurchase] = useState({ name: "", shippingaddress: "", billingaddress: "" });
 
 
+    // const [items, setItems] = useState([
+    //     { itemName: 'iPhoe pro 13', quantity: 1, isSelected: false },
+    //     { itemName: 'MacBook Pro', quantity: 3, isSelected: true },
+    //     { itemName: 'Imac', quantity: 2, isSelected: false },
+    // ]);
 
-    const [items, setItems] = useState([]);
+    // const [inputValue, setInputValue] = useState('');
 
-    // handle click event of the button to add item
-    const addMoreItem = (e1, e2) => {
+    // const [totalItemCount, setTotalItemCount] = useState(6);
+    // const addItem = "";
 
-        setItems(prevItems => [...prevItems, {
-            id: prevItems.length,
-            productname: e1,
-            price: e2
-           
-        }]);
-    }
+    // const handleAddButtonClick = (addItem, price) => {
+    //     const newItem = {
+    //         itemName: addItem,
+    //         quantity: 1,
+    //         price: price,
+    //         isSelected: false,
+    //     };
+    // }
+
+    // const newItems = [...items, newItem];
+
+    // setItems(newItems);
+
+
+
+    // const [items, setItems] = useState([]);
+
+    // // handle click event of the button to add item
+    // const addMoreItem = (e1, e2) => {
+
+    //     setItems(prevItems => [...prevItems, {
+    //         id: prevItems.length,
+    //         productname: e1,
+    //         price: e2
+
+    //     }]);
+    // }
 
 
     const handleChange = e => {
@@ -51,6 +77,77 @@ function Buyer() {
                 console.log("Failed to write data to DB! " + error);
             });
     }
+
+
+
+
+
+
+
+    /////////////////////////////////////////////////////////
+    // HINT: each "item" in our list names a name,
+	// a boolean to tell if its been completed, and a quantity
+
+	const [items, setItems] = useState([
+		{ itemName: 'iPhoe pro 13', quantity: 1, isSelected: false },
+		{ itemName: 'MacBook Pro', quantity: 3, isSelected: true },
+		{ itemName: 'Imac', quantity: 2, isSelected: false },
+	]);
+
+	const [inputValue, setInputValue] = useState('');
+	const [totalItemCount, setTotalItemCount] = useState(6);
+
+	const handleAddButtonClick = (itemName, itemPrice) => {
+		const newItem = {
+			itemName: itemName,
+            price:itemPrice,
+			quantity: 1,
+			isSelected: false,
+            
+		};
+
+		const newItems = [...items, newItem];
+        console.log(newItems);
+
+		//setItems(newItems);
+		//setInputValue('');
+		//calculateTotal();
+	};
+
+	// const handleQuantityIncrease = (index) => {
+	// 	const newItems = [...items];
+
+	// 	newItems[index].quantity++;
+
+	// 	setItems(newItems);
+	// 	calculateTotal();
+	// };
+
+	// const handleQuantityDecrease = (index) => {
+	// 	const newItems = [...items];
+
+	// 	newItems[index].quantity--;
+
+	// 	setItems(newItems);
+	// 	calculateTotal();
+	// };
+
+	// const toggleComplete = (index) => {
+	// 	const newItems = [...items];
+
+	// 	newItems[index].isSelected = !newItems[index].isSelected;
+
+	// 	setItems(newItems);
+	// };
+
+	// const calculateTotal = () => {
+	// 	const totalItemCount = items.reduce((total, item) => {
+	// 		return total + item.quantity;
+	// 	}, 0);
+
+	// 	setTotalItemCount(totalItemCount);
+	// };
+    ////////////////////////////////////////////////////////////////////////
 
 
     return (
@@ -92,30 +189,65 @@ function Buyer() {
                     name="billingaddress"
                 />
             </div>
-
-            <h2>Select Products</h2>
-
-            {/* <button onclick="{addMoreItem}">Add More</button> */}
+            <div>
+                <h2>Select Products</h2>
+            </div>        
 
             <div className="divbuttommargin">
-                <label>product Name: iPhone 13    price: 2000</label>
-                <button onClick={addMoreItem("iphone 13", 2000)}>
-               
-                Add to Cart
-
-                </button>   
+                <span>product Name: iPhone pro   price: 2000</span>
+                <button className="buttonCart" onClick={handleAddButtonClick("iphone 13", 2000)}>
+                    Add to Cart
+                </button>
             </div>
+
+            <div className="divbuttommargin">
+                <span>product Name: Samsung    price: 100</span>
+                <button className="buttonCart" onClick={handleAddButtonClick("Samsung", 2000)}>
+                    Add to Cart
+                </button>
+            </div>
+
+            <div className="divbuttommargin">
+                <span>product Name: macbookpro    price: 2500</span>
+                <button className="buttonCart" onClick={handleAddButtonClick("iphone 13", 2000)}>
+                    Add to Cart
+                </button>
+            </div>
+
+            <div className="divbuttommargin">
+                <span>product Name: iPhone 13    price: 2000</span>
+                <button className="buttonCart" onClick={handleAddButtonClick("iphone 13", 2000)}>
+                    Add to Cart
+                </button>
+            </div>
+
+            <div className="divbuttommargin">
+                <span>product Name: iPhone 13    price: 2000</span>
+                <button className="buttonCart" onClick={handleAddButtonClick("iphone 13", 2000)}>
+                    Add to Cart
+                </button>
+            </div>
+
+            <div className="divbuttommargin">
+                <span>product Name: iPhone 13    price: 2000</span>
+                <button className="buttonCart" onClick={handleAddButtonClick("iphone 13", 2000)}>
+                    Add to Cart
+                </button>
+            </div>
+
+
             <div>
                 <input
 
                     className="clickbutton"
-                    value="Save Product"
+                    value="Place Order "
                     type="button"
                     onChange={purchaseHandler}
 
                 />
-            </div>        
+            </div>
         </div>
     )
 }
-export default Buyer;
+
+

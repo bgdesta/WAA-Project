@@ -105,18 +105,16 @@ const App = () => {
       <nav className="navs">
         <ul className="nav-links">
           <Link style={navStyle} to="/login">
-            {" "}
+           
             <li>Login </li>
           </Link>
           <Link style={navStyle} to="/register">
             <li> Signup </li>
           </Link>
           <Link style={navStyle} to="/product">
-            {" "}
             <li> product </li>
           </Link>
           <Link style={navStyle} to="/purchase">
-            {" "}
             <li> purchase </li>
           </Link>
         </ul>
