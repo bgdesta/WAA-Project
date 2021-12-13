@@ -20,6 +20,11 @@ import { history } from "./helpers/history";
 // import AuthVerify from "./common/AuthVerify";
 import EventBus from "./common/EventBus";
 
+import './cssStyle/cssstyle.css'
+import Product from "./components/product";
+import Purchase from "./components/buyer"
+
+
 const App = () => {
   // const [showModeratorBoard, setShowModeratorBoard] = useState(false);
   // const [showAdminBoard, setShowAdminBoard] = useState(false);
@@ -55,9 +60,17 @@ const App = () => {
     };
   }, [currentUser, logOut]);
 
+
+  const navStyle = {
+    color: 'white'
+  };
+
+
   return (
+
+    
     <Router>
-      <nav className="navbar navbar-expand navbar-dark bg-dark">
+      {/* <nav className="navbar navbar-expand navbar-dark bg-dark"> */}
         {/* <Link to={"/"} className="navbar-brand">
           MIU
         </Link>
@@ -93,6 +106,19 @@ const App = () => {
           )}
         </div> */}
 
+      <nav className="navs">
+        <ul className="nav-links" >
+             <Link style={navStyle} to= '/login'> <li>Login </li></Link> 
+             <Link style={navStyle} to= '/register'><li> Signup </li></Link> 
+             <Link style={navStyle} to= '/product'> <li> product </li></Link> 
+             <Link style={navStyle} to= '/purchase'> <li> purchase </li></Link>
+             
+
+        </ul>
+        
+      </nav>
+        {/* hadis 
+
         {currentUser ? (
           <div className="navbar-nav ml-auto">
             <li className="nav-item">
@@ -122,13 +148,16 @@ const App = () => {
           </div>
         )}
       </nav>
+    */}
       <Routes>
         {/* <div className="container mt-3"> */}
         {/* <Route path={["/", "/home"]} element={Home} /> */}
 
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/profile" element={<Profile />} />
+        <Route path="/product" element={<Product />} />
+        <Route path="/purchase" element={<Purchase />} />
+
         {/* <Route path="/user" element={BoardUser} />
         <Route path="/mod" element={BoardModerator} />
         <Route path="/admin" element={BoardAdmin} /> */}
