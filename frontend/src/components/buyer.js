@@ -71,23 +71,10 @@ export default function Buyer() {
   /////////////////////////////////////////////
 
   function removeFromCart(productName){
+
+    cart.splice(cart.findIndex(item => item.itemName === productName), 1)
     console.log(cart)
 
-    cart.map(item=>{
-      return item.itemName != productName 
-      // var index = cart.indexOf(item.itemName==productName); // Let's say it's Bob.
-      // delete cart[index];
-      // return cart;
-
-    })
-    
-    // var filtered = cart.filter(function(el) { 
-    //   console.log(el.itemName)
-    //     return el.itemName != productName; 
-        
-    //  }); 
-    //  Object.assign(cart, filtered);
-   
   }
 
   return (
