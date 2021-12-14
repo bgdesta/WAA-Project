@@ -102,7 +102,7 @@ const App = () => {
 
           {currentUser && currentUser.roles[0] === "ROLE_BUYER" ? (
             <div>
-              <Link to={"/order"} style={navStyle} className="nav-item">
+              <Link to={"/orders"} style={navStyle} className="nav-item">
                 Product Orders
               </Link>
 
