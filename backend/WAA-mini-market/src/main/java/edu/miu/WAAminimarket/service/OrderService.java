@@ -6,4 +6,8 @@ import java.util.List;
 
 public interface OrderService {
     List<Order> findAll();
+
+    Order updateOrder(Long id, Order order);
+
+    List<Order> placeOrder(Order order);
 }

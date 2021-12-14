@@ -7,10 +7,7 @@ import "./App.css";
 
 import Login from "./components/Login";
 import Register from "./components/Register";
-// import Home from "./components/Home";
 import Profile from "./components/Profile";
-// import BoardUser from "./components/BoardUser";
-// import BoardModerator from "./components/BoardModerator";
 
 import { logout } from "./actions/auth";
 import { clearMessage } from "./actions/message";
@@ -23,6 +20,7 @@ import AdminLandingPage from "./components/AdminLandingPage";
 import "./cssStyle/cssstyle.css";
 import Product from "./components/product";
 import SellerLandingPage from "./components/SellerLandingPage";
+import ViewOrders from "./components/ViewOrder";
 import Purchase from "./components/buyer";
 
 const App = () => {
@@ -40,14 +38,6 @@ const App = () => {
   }, [dispatch]);
 
   useEffect(() => {
-    // if (currentUser) {
-    //   setShowModeratorBoard(currentUser.roles.includes("ROLE_MODERATOR"));
-    //   setShowAdminBoard(currentUser.roles.includes("ROLE_ADMIN"));
-    // } else {
-    //   setShowModeratorBoard(false);
-    //   setShowAdminBoard(false);
-    // }
-
     EventBus.on("logout", () => {
       logOut();
     });
@@ -64,11 +54,11 @@ const App = () => {
   return (
     <Router>
       <nav className="navs">
-        <ul className="nav-links">
+        <ul>
           {currentUser ? (
             <div className="nav-item">
               <a href="/login" style={navStyle} onClick={logOut}>
-                <li>LogOut</li>
+                <li id="logout-list">LogOut</li>
               </a>
             </div>
           ) : (
@@ -102,6 +92,9 @@ const App = () => {
               <Link to={"/product"} className="nav-link" style={navStyle}>
                 Register Prod
               </Link>
+              <Link to={"/orders"} className="nav-link" style={navStyle}>
+                View Orders
+              </Link>
             </div>
           ) : (
             <div></div>
@@ -130,6 +123,7 @@ const App = () => {
         <Route path="/register" element={<Register />} />
         <Route path="/products" element={<SellerLandingPage />} />
         <Route path="/product" element={<Product />} />
+        <Route path="/orders" element={<ViewOrders />} />
         <Route path="/purchase" element={<Purchase />} />
         <Route path="/profile" element={<Profile />} />
       </Routes>

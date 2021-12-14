@@ -3,10 +3,7 @@ package edu.miu.WAAminimarket.controller;
 import edu.miu.WAAminimarket.domain.Order;
 import edu.miu.WAAminimarket.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -20,5 +17,14 @@ public class OrderController {
     @GetMapping
     public List<Order> getAllOrders(){
         return orderService.findAll();
+    }
+
+    @PostMapping
+    public List<Order> placeOrder(@RequestBody Order order){
+        return orderService.placeOrder(order);
+    }
+    @PutMapping("/{id}")
+    public Order cancelOrder(@PathVariable("id") Long id, @RequestBody Order order){
+        return orderService.updateOrder(id, order);
     }
 }

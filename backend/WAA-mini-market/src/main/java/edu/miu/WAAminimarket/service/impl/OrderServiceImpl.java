@@ -18,4 +18,16 @@ public class OrderServiceImpl implements OrderService {
     public List<Order> findAll() {
         return (List<Order>) orderRepository.findAll();
     }
+
+    @Override
+    public Order updateOrder(Long id, Order order) {
+        Order ord = orderRepository.findById(id).get();
+        ord.setStatus("CANCELLED");
+        return orderRepository.save(ord);
+    }
+
+    @Override
+    public List<Order> placeOrder(Order order) {
+        return (List<Order>) orderRepository.save(order);
+    }
 }
