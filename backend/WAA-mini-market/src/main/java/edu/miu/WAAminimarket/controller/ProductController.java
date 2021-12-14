@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/products")
@@ -23,8 +24,13 @@ public class ProductController {
     // Register a new product
     @PostMapping
     public Product regProduct(@RequestBody Product prod){
-
+        prod.setStatus("AVAILABLE");
         return productService.save(prod);
+    }
+
+    @GetMapping("/{id}")
+    public Optional<Product> getProductById(@PathVariable Long id){
+        return productService.findProductById(id);
     }
 
     // Update Product data
@@ -35,7 +41,12 @@ public class ProductController {
 
     // Delete Product
     @DeleteMapping("/{id}")
-    public void deleteStudent(@PathVariable Long id){
-        productService.deleteById(id);
+    public String deleteProduct(@PathVariable Long id){
+        String p = getProductById(id).get().getStatus();
+        if(p.equals("SOLD")){
+            return "FAIL_DELETE";
+        }
+        return productService.deleteById(id);
+
     }
 }

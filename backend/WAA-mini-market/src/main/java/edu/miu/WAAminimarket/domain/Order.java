@@ -7,6 +7,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -23,6 +24,9 @@ public class Order {
     private String billingaddress;
     private String status;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     private Customer customer;
+
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
+    private List<Product> productList;
 }

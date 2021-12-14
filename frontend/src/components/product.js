@@ -89,7 +89,7 @@ export default function Product() {
         </div>
         <div className="form-group">
           <label htmlFor="description">Description</label>
-          <Input
+          <textarea
             type="text"
             className="form-control"
             name="description"

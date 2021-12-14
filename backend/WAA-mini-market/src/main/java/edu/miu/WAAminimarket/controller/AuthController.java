@@ -91,7 +91,6 @@ public class AuthController {
 		} else {
 			switch (role) {
 				case "admin":
-					System.out.println("======================: " + role);
 					Role adminRole = roleRepository.findByName(ERole.ROLE_ADMIN)
 							.orElseThrow(() -> new RuntimeException("Admin Error: Invalid Role."));
 
