@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import axios from "axios";
-import DisplayCart from "./displayCart";
 import iphone11 from "../images/iphone11.jpg";
 import "../cssStyle/cssstyle.css";
 import macbookpro from "../images/macbookpro.jpg";
@@ -16,7 +15,7 @@ export default function Buyer() {
     billingaddress: "",
   });
 
-  const handleChange = (e) => {
+  const purchaseProfileHandler = (e) => {
     const { name, value } = e.target;
     setPurchase((prevState) => ({
       ...prevState,
@@ -24,7 +23,7 @@ export default function Buyer() {
     }));
   };
 
-  function purchaseHandler(event) {
+  function placeOrderHandler(event) {
     event.preventDefault();
 
     let purchaseData = {
@@ -43,27 +42,37 @@ export default function Buyer() {
         console.log("Failed to write data to DB! " + error);
       });
   }
+  
 
-  const [items, setItems] = useState([
-    { itemName: "iPhoe pro 13", quantity: 1, isSelected: false },
-    { itemName: "MacBook Pro", quantity: 3, isSelected: true },
-    { itemName: "Imac", quantity: 2, isSelected: false },
+  const [cart, setCart] = useState([{itemName:"", itemPrice:0,quantity:0}
+    //{ itemName: "iPhoe pro 13", quantity: 1, isSelected: false },
+    // { itemName: "MacBook Pro", quantity: 3, isSelected: true },
+    // { itemName: "Imac", quantity: 2, isSelected: false },
   ]);
 
-  const [inputValue, setInputValue] = useState("");
-  const [totalItemCount, setTotalItemCount] = useState(6);
+  //const [inputValue, setInputValue] = useState("");
+  //const [totalItemCount, setTotalItemCount] = useState(6);
 
-  const handleAddButtonClick = (itemName, itemPrice) => {
+  ///////////////////////////////////////////////////
+  const addToCartHandler = (itemName, itemPrice) => {
     const newItem = {
       itemName: itemName,
       price: itemPrice,
       quantity: 1,
-      isSelected: false,
     };
-
-    const newItems = [...items, newItem];
-    console.log(newItems);
+    const newItems = [...cart, newItem];
+    setCart(newItems);
   };
+  /////////////////////////////////////////////
+
+  function removeFromCart(productName){
+    var filtered = cart.filter(function(el) { 
+        return el.itemName !== productName; 
+     }); 
+     Object.assign(cart, filtered);
+   
+   
+  }
 
   return (
     <div>
@@ -77,7 +86,7 @@ export default function Buyer() {
           className="inputclass"
           value={purchase.name}
           type="text"
-          onChange={handleChange}
+          onChange={purchaseProfileHandler}
           name="name"
         />
       </div>
@@ -88,7 +97,7 @@ export default function Buyer() {
           className="inputclass"
           value={purchase.shippingaddress}
           type="text"
-          onChange={handleChange}
+          onChange={purchaseProfileHandler}
           name="shippingaddress"
         />
       </div>
@@ -99,7 +108,7 @@ export default function Buyer() {
           className="inputclass"
           value={purchase.billingaddress}
           type="text"
-          onChange={handleChange}
+          onChange={purchaseProfileHandler}
           name="billingaddress"
         />
       </div>
@@ -124,10 +133,19 @@ export default function Buyer() {
 
         <button
           className="buttonCart"
-          onClick={handleAddButtonClick("iphone 13", 2000)}
+          onClick={addToCartHandler("iPhone 13 Pro", 2000)}
         >
           Add to Cart
         </button>
+
+        <button
+          className="buttonCart"
+          onClick={removeFromCart("Samsung Galaxy M31")}
+        >
+          Remove from Cart
+        </button>
+
+        
       </div>
 
       <div className="divbuttommargin">
@@ -147,10 +165,19 @@ export default function Buyer() {
 
         <button
           className="buttonCart"
-          onClick={handleAddButtonClick("Samsung", 2000)}
+          onClick={addToCartHandler("Samsung Galaxy M31", 2000)}
         >
           Add to Cart
         </button>
+
+        <button
+          className="buttonCart"
+          onClick={removeFromCart("Samsung Galaxy M31")}
+        >
+          Remove from Cart
+        </button>
+
+
       </div>
 
       <div className="divbuttommargin">
@@ -169,9 +196,16 @@ export default function Buyer() {
 
         <button
           className="buttonCart"
-          onClick={handleAddButtonClick("iphone 13", 2000)}
+          onClick={addToCartHandler("iphone 13", 2000)}
         >
           Add to Cart
+        </button>
+
+        <button
+          className="buttonCart"
+          onClick={removeFromCart("iphone 13")}
+        >
+          Remove from Cart
         </button>
       </div>
 
@@ -183,7 +217,7 @@ export default function Buyer() {
           Loop The stainless steel case is durable and polished to a shiny,
           mirror-like finish. The Milanese Loop is made from a smooth stainless
           steel mesh that’s fully magnetic, so it’s infinitely adjustable for a
-          perfect fit.{" "}
+          perfect fit.
         </p>
         <p className="gclass">
           Connectivity What’s the difference between GPS and GPS + Cellular? GPS
@@ -194,10 +228,19 @@ export default function Buyer() {
         <p className="gclass">price: 500</p>
         <button
           className="buttonCart"
-          onClick={handleAddButtonClick("iphone 13", 2000)}
+          onClick={addToCartHandler(" Apple Watch", 2000)}
+
         >
           Add to Cart
         </button>
+
+        <button
+          className="buttonCart"
+          onClick={removeFromCart(" Apple Watch")}
+        >
+          Remove from Cart
+        </button>
+
       </div>
 
       <div className="divbuttommargin">
@@ -217,7 +260,7 @@ export default function Buyer() {
         <p className="gclass">price: 1000</p>
         <button
           className="buttonCart"
-          onClick={handleAddButtonClick("iphone 13", 2000)}
+          onClick={addToCartHandler("iphone 13", 2000)}
         >
           Add to Cart
         </button>
@@ -226,7 +269,7 @@ export default function Buyer() {
       <div className="divbuttommargin">
         <img src={macmin} alt="logo"></img>
 
-        <p className="gclass">product Name: Mac min: </p>
+        <p className="gclass">product Name: Mac Min: </p>
         <p className="gclass">
           {" "}
           Apple Mac Mini Desktop Intel Core i5 2.6GHz (MGEN2LL/A ) 8GB Memory,
@@ -244,14 +287,21 @@ export default function Buyer() {
 
         <button
           className="buttonCart"
-          onClick={handleAddButtonClick("iphone 13", 2000)}
+          onClick={addToCartHandler("Mac Min", 500)}
         >
           Add to Cart
+        </button>
+
+        <button
+          className="buttonCart"
+          onClick={removeFromCart("Mac Min")}
+        >
+          Remove from Cart
         </button>
       </div>
 
       <div>
-        <button className="clickbutton" onClick={purchaseHandler}>
+        <button className="clickbutton" onClick={placeOrderHandler}>
           Place Order
         </button>
       </div>
