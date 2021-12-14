@@ -23,4 +23,7 @@ public class Product {
     private Double unitprice;
     private String description;
     private String status;
+
+    @ManyToOne
+    private Order order;
 }

@@ -23,13 +23,6 @@ public class User {
     private String password;
     private String status = "PENDING";
 
-//    @ManyToMany(fetch = FetchType.LAZY)
-//    @JoinTable(	name = "user_roles",
-//            joinColumns = @JoinColumn(name = "user_id"),
-//            inverseJoinColumns = @JoinColumn(name = "role_id"))
-//    private Set<Role> roles = new HashSet<>();
-
-
     @JsonBackReference
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "role_id")

@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
-// import Select from "react-validation/build/select";
+import SigninSignoutPicture from "./sharedComponents/SigninSignoutPicture";
 import CheckButton from "react-validation/build/button";
 import { isEmail } from "validator";
 
@@ -103,12 +103,7 @@ const Register = () => {
   return (
     <div className="col-md-12">
       <div className="card card-container">
-        <img
-          src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
-          alt="profile-img"
-          className="profile-img-card"
-        />
-
+        <SigninSignoutPicture />
         <Form onSubmit={handleRegister} ref={form}>
           {!successful && (
             <div>

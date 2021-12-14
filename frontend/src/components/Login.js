@@ -7,6 +7,7 @@ import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
 
 import { login } from "../actions/auth";
+import SigninSignoutPicture from "./sharedComponents/SigninSignoutPicture";
 
 const required = (value) => {
   if (!value) {
@@ -63,17 +64,13 @@ const Login = (props) => {
   };
 
   if (isLoggedIn) {
-    return <Link to={"/profile"} className="nav-link"></Link>;
+    return <Link to={"/home"} className="nav-link"></Link>;
   }
 
   return (
-    <div className="col-md-12">
+    <div>
       <div className="card card-container">
-        <img
-          src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
-          alt="profile-img"
-          className="profile-img-card"
-        />
+        <SigninSignoutPicture />
 
         <Form onSubmit={handleLogin} ref={form}>
           <div className="form-group">

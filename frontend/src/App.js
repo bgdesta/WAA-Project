@@ -17,24 +17,21 @@ import { clearMessage } from "./actions/message";
 
 import { history } from "./helpers/history";
 
-// import AuthVerify from "./common/AuthVerify";
 import EventBus from "./common/EventBus";
 import AdminLandingPage from "./components/AdminLandingPage";
 
 import "./cssStyle/cssstyle.css";
 import Product from "./components/product";
+import SellerLandingPage from "./components/SellerLandingPage";
 import Purchase from "./components/buyer";
 
 const App = () => {
-  // const [showModeratorBoard, setShowModeratorBoard] = useState(false);
-  // const [showAdminBoard, setShowAdminBoard] = useState(false);
-
   const { user: currentUser } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
 
   useEffect(() => {
     history.listen((location) => {
-      dispatch(clearMessage()); // clear message when changing location
+      dispatch(clearMessage());
     });
   }, [dispatch]);
 
@@ -98,14 +95,12 @@ const App = () => {
           )}
 
           {currentUser && currentUser.roles[0] === "ROLE_SELLER" ? (
-            <div className="nav-item">
-              <Link
-                to={"/product"}
-                className="nav-link"
-                style={navStyle}
-                nav-item
-              >
-                Register Product
+            <div>
+              <Link to={"/products"} className=" nav-link" style={navStyle}>
+                View Products
+              </Link>
+              <Link to={"/product"} className="nav-link" style={navStyle}>
+                Register Prod
               </Link>
             </div>
           ) : (
@@ -133,6 +128,7 @@ const App = () => {
         <Route path="/logout" element={<logout />} />
         <Route path="/admin" element={<AdminLandingPage />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/products" element={<SellerLandingPage />} />
         <Route path="/product" element={<Product />} />
         <Route path="/purchase" element={<Purchase />} />
         <Route path="/profile" element={<Profile />} />
