@@ -15,6 +15,12 @@ export default function Buyer() {
     billingaddress: "",
   });
 
+  const [cart, setCart] = useState([
+  //{ itemName: "iPhoe pro 13", quantity: 1, isSelected: false },
+  // { itemName: "MacBook Pro", quantity: 3, isSelected: true },
+  // { itemName: "Imac", quantity: 2, isSelected: false },
+]);
+
   const purchaseProfileHandler = (e) => {
     const { name, value } = e.target;
     setPurchase((prevState) => ({
@@ -31,6 +37,7 @@ export default function Buyer() {
       shippingaddress: purchase.shippingaddress,
       billingaddress: purchase.billingaddress,
     };
+    console.log(cart);
 
     axios
       .post("http://localhost:8080/customers", purchaseData)
@@ -44,11 +51,7 @@ export default function Buyer() {
   }
   
 
-  const [cart, setCart] = useState([{itemName:"", itemPrice:0,quantity:0}
-    //{ itemName: "iPhoe pro 13", quantity: 1, isSelected: false },
-    // { itemName: "MacBook Pro", quantity: 3, isSelected: true },
-    // { itemName: "Imac", quantity: 2, isSelected: false },
-  ]);
+ 
 
   //const [inputValue, setInputValue] = useState("");
   //const [totalItemCount, setTotalItemCount] = useState(6);
@@ -61,16 +64,29 @@ export default function Buyer() {
       quantity: 1,
     };
     const newItems = [...cart, newItem];
-    setCart(newItems);
+    //cart = newItems
+    Object.assign(cart, newItems);
+    //setCart(newItems);
   };
   /////////////////////////////////////////////
 
   function removeFromCart(productName){
-    var filtered = cart.filter(function(el) { 
-        return el.itemName !== productName; 
-     }); 
-     Object.assign(cart, filtered);
-   
+    console.log(cart)
+
+    cart.map(item=>{
+      return item.itemName != productName 
+      // var index = cart.indexOf(item.itemName==productName); // Let's say it's Bob.
+      // delete cart[index];
+      // return cart;
+
+    })
+    
+    // var filtered = cart.filter(function(el) { 
+    //   console.log(el.itemName)
+    //     return el.itemName != productName; 
+        
+    //  }); 
+    //  Object.assign(cart, filtered);
    
   }
 
@@ -133,14 +149,14 @@ export default function Buyer() {
 
         <button
           className="buttonCart"
-          onClick={addToCartHandler("iPhone 13 Pro", 2000)}
+          onClick={() => addToCartHandler("iPhone 13 Pro", 2000)}
         >
           Add to Cart
         </button>
 
         <button
           className="buttonCart"
-          onClick={removeFromCart("Samsung Galaxy M31")}
+          onClick={() =>removeFromCart("iPhone 13 Pro")}
         >
           Remove from Cart
         </button>
@@ -165,14 +181,14 @@ export default function Buyer() {
 
         <button
           className="buttonCart"
-          onClick={addToCartHandler("Samsung Galaxy M31", 2000)}
+          onClick={() => addToCartHandler("Samsung Galaxy M31", 2000)}
         >
           Add to Cart
         </button>
 
         <button
           className="buttonCart"
-          onClick={removeFromCart("Samsung Galaxy M31")}
+          onClick={() =>removeFromCart("Samsung Galaxy M31")}
         >
           Remove from Cart
         </button>
@@ -196,14 +212,14 @@ export default function Buyer() {
 
         <button
           className="buttonCart"
-          onClick={addToCartHandler("iphone 13", 2000)}
+          onClick={() => addToCartHandler("MacBook Pro", 2000)}
         >
           Add to Cart
         </button>
 
         <button
           className="buttonCart"
-          onClick={removeFromCart("iphone 13")}
+          onClick={() =>removeFromCart("MacBook Pro")}
         >
           Remove from Cart
         </button>
@@ -213,7 +229,7 @@ export default function Buyer() {
         <img src={applewatch} alt="logo"></img>
 
         <p className="gclass">
-          product Name: Apple Watch:Graphite Stainless Steel Case with Milanese
+          product Name: Apple Watch: Graphite Stainless Steel Case with Milanese
           Loop The stainless steel case is durable and polished to a shiny,
           mirror-like finish. The Milanese Loop is made from a smooth stainless
           steel mesh that’s fully magnetic, so it’s infinitely adjustable for a
@@ -228,15 +244,13 @@ export default function Buyer() {
         <p className="gclass">price: 500</p>
         <button
           className="buttonCart"
-          onClick={addToCartHandler(" Apple Watch", 2000)}
-
+          onClick={() => addToCartHandler(" Apple Watch", 500)}
         >
           Add to Cart
         </button>
-
         <button
           className="buttonCart"
-          onClick={removeFromCart(" Apple Watch")}
+          onClick={() =>removeFromCart(" Apple Watch")}
         >
           Remove from Cart
         </button>
@@ -260,7 +274,7 @@ export default function Buyer() {
         <p className="gclass">price: 1000</p>
         <button
           className="buttonCart"
-          onClick={addToCartHandler("iphone 13", 2000)}
+          onClick={() => addToCartHandler("iPhone 11", 1500)}
         >
           Add to Cart
         </button>
@@ -287,21 +301,22 @@ export default function Buyer() {
 
         <button
           className="buttonCart"
-          onClick={addToCartHandler("Mac Min", 500)}
+          onClick={() => addToCartHandler("Mac Min", 500)}
         >
           Add to Cart
         </button>
 
         <button
           className="buttonCart"
-          onClick={removeFromCart("Mac Min")}
+          onClick={() =>removeFromCart("Mac Min")}
         >
           Remove from Cart
         </button>
       </div>
 
       <div>
-        <button className="clickbutton" onClick={placeOrderHandler}>
+        <button className="clickbutton" 
+        onClick={placeOrderHandler}>
           Place Order
         </button>
       </div>
