@@ -23,9 +23,9 @@ const SellerLandingPage = () => {
           error.message ||
           error.toString();
         setProducts(_content);
-        // if (error.response && error.response.status === 401) {
-        //   EventBus.dispatch("logout");
-        // }
+        if (error.response && error.response.status === 401) {
+          EventBus.dispatch("logout");
+        }
       }
     );
   }

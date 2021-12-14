@@ -15,6 +15,10 @@ label {
   display: block;
   margin-top: 10px;
 }
+#logout-list {
+  list-style: none;
+  float: left;
+}
 .container {
   margin: auto;
   text-align: center;
@@ -24,7 +28,7 @@ label {
   padding: 40px 40px;
 }
 .nav-item {
-  margin-right: 30px;
+  margin-right: 10px;
 }
 .card {
   background-color: #f7f7f7;

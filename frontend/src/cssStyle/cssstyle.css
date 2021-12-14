@@ -1,21 +1,22 @@
-.navs{
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    min-height: 5vh;
-    background: rgb(89, 89, 94);
-    color: white;
-    font-family: Arial, Helvetica, sans-serif;
+.navs {
+  width: auto;
+  text-align: center;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  min-height: 5vh;
+  background: rgb(89, 89, 94);
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
-.nav-links{
-    width: 40%;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    min-height: 5vh;
-    list-style: none;
-    
+.nav-links {
+  width: 80%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  min-height: 5vh;
+  list-style: none;
 }
 
 .divbuttommargin {
@@ -27,60 +28,55 @@
   text-align: right;
 }
 
-.inputclass{
-    background-color: #b6b6c9;
-    color: cyan;
-    border-left: 10px;
-    margin-left: 10px;
+.inputclass {
+  background-color: #b6b6c9;
+  color: cyan;
+  border-left: 10px;
+  margin-left: 10px;
 
-    height: 10px;
-    border-radius: 3px;
-    border: 1px solid blue_theme;
-   
-    padding: 5px;
-    font-family:  sans-serif;
-    font-size: 19px;
-    color: #3e3e42;
-    background: rgba(15, 15, 15, 0.01);
+  height: 10px;
+  border-radius: 3px;
+  border: 1px solid blue_theme;
+
+  padding: 5px;
+  font-family: sans-serif;
+  font-size: 19px;
+  color: #3e3e42;
+  background: rgba(15, 15, 15, 0.01);
 }
 
-.clickbutton{
-    margin-left: 100px;
-    margin-bottom: 100px;
-    width: 150px;
-    height: 50px;
-   font-family: Arial, Helvetica, sans-serif;
-    font-weight: bold; 
+.clickbutton {
+  margin-left: 100px;
+  margin-bottom: 100px;
+  width: 150px;
+  height: 50px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
 }
 
-.h3class{
-    margin-left: 100px;
+.h3class {
+  margin-left: 100px;
 }
 
-span{
-    margin-left: 100px;
+span {
+  margin-left: 100px;
 }
 
-
-
-.buttonCart{
-    margin-left: 100px;
-    width: 150px;
-    font-family: Arial, Helvetica, sans-serif;
-    margin-bottom: 50px;
-  
+.buttonCart {
+  margin-left: 100px;
+  width: 150px;
+  font-family: Arial, Helvetica, sans-serif;
+  margin-bottom: 50px;
 }
-a{
-    margin-left: 100px;
+a {
+  margin-left: 100px;
 }
 
-img{
-    width:300px;
-    height:300px;
-    margin-left: 100px;
+img {
+  width: 300px;
+  height: 300px;
+  margin-left: 100px;
 }
-.gclass{
-    margin-left: 100px;
+.gclass {
+  margin-left: 100px;
 }
-
-

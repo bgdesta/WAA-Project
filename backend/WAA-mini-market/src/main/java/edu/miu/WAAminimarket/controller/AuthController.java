@@ -84,7 +84,6 @@ public class AuthController {
 							 encoder.encode(signUpRequest.getPassword()));
 
 		String role = signUpRequest.getRole();
-		System.out.println("--------role----------: " + role);
 		if (role == null) {
 			throw new RuntimeException("Error: Role is not found.");
 
