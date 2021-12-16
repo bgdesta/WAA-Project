@@ -1,5 +1,6 @@
 package edu.miu.WAAminimarket.domain;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,10 +19,15 @@ public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private String name;
+    private String phone;
+    private String shippingaddress;
+    private String billingaddress;
 
-    @OneToMany(mappedBy = "customer")
+    @JsonManagedReference
+    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
     private List<Order> orderList;
 
-    @OneToMany(mappedBy = "customer")
-    private List<Cart> carts;
+//    @OneToMany(mappedBy = "customer")
+//    private List<Cart> carts;
 }

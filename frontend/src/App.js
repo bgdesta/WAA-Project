@@ -55,15 +55,6 @@ const App = () => {
     <Router>
       <nav className="navs">
         <ul>
-          
-        {/* <Link to={"/Hadis"} style={navStyle} className="nav-item">
-                  Hadis
-                </Link>
-                <Routes>
-        <Route path="/Hadis" element={<Purchase />} />
-        </Routes> */}
-
-
           {currentUser ? (
             <div className="nav-item">
               <a href="/login" style={navStyle} onClick={logOut}>

@@ -1,31 +1,27 @@
 package edu.miu.WAAminimarket.domain;
 
-import lombok.AllArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.Date;
 import java.util.List;
 
-@NoArgsConstructor
-@AllArgsConstructor
 @Getter
 @Setter
-@Table(name = "order")
 @Entity
+@Table(name = "orders")
 public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String orderdate;
-    private String shippingaddress;
-    private String billingaddress;
+    private String ordered_date;
+    private String shipped_date;
     private String status;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-//    @JoinColumn(name = "customer_id")
+    @JsonBackReference
+    @ManyToOne
+    @JoinColumn(name = "customer_id")
     private Customer customer;
 
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
