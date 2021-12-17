@@ -30,7 +30,7 @@ public class User {
     private Role role;
 
     @OneToMany(mappedBy = "user")
-    private List<Orders> ordersList;
+    private List<Order> ordersList;
 
     public User(String name, String phone, String username, String email, String password) {
         this.name = name;

@@ -1,6 +1,6 @@
 package edu.miu.WAAminimarket.service.impl;
 
-import edu.miu.WAAminimarket.domain.Orders;
+import edu.miu.WAAminimarket.domain.Order;
 import edu.miu.WAAminimarket.repository.OrderRepository;
 import edu.miu.WAAminimarket.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,19 +15,21 @@ public class OrderServiceImpl implements OrderService {
     OrderRepository orderRepository;
 
     @Override
-    public List<Orders> findAll() {
-        return (List<Orders>) orderRepository.findAll();
+    public List<Order> findAll() {
+        return (List<Order>) orderRepository.findAll();
     }
 
     @Override
-    public Orders updateOrder(Long id, Orders order) {
-        Orders ord = orderRepository.findById(id).get();
-        ord.setStatus("CANCELLED");
+    public Order updateOrder(Long id, Order order) {
+        Order ord = orderRepository.findById(id).get();
+        System.out.println("---------------: " + ord.getStatus());
+        System.out.println("===============: " + order.getStatus());
+        ord.setStatus(order.getStatus());
         return orderRepository.save(ord);
     }
 
     @Override
-    public List<Orders> placeOrder(Orders order) {
-        return (List<Orders>) orderRepository.save(order);
+    public Order placeOrder(Order order) {
+        return orderRepository.save(order);
     }
 }

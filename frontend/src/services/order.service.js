@@ -9,11 +9,15 @@ const getAllOrders = () => {
 };
 
 const cancelOrder = (id) => {
-  return axios.put(API_URL + id, { headers: authHeader() });
+  return axios.put(
+    API_URL + id,
+    { status: "CANCELLED" },
+    { headers: authHeader() }
+  );
 };
 
-const changeStatus = (id) => {
-  return axios.put(API_URL + id, { headers: authHeader() });
+const changeStatus = (id, data) => {
+  return axios.put(API_URL + id, data, { headers: authHeader() });
 };
 
 export default {

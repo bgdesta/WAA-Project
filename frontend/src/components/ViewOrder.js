@@ -5,13 +5,14 @@ import orderService from "../services/order.service";
 import productService from "../services/order.service";
 
 const ViewOrders = () => {
-  const [orders, setOrders] = useState([{}]);
-  const [orderStatus, setOrderStatus] = useState([
-    {
-      status: "",
-    },
-  ]);
+  const [orders, setOrders] = useState([]);
+  const [orderStatus, setOrderStatus] = useState({
+    status: "",
+  });
 
+  function statusChangeHandler(event) {
+    setOrderStatus(event.target.value);
+  }
   function handleCancel(id) {
     orderService.cancelOrder(id).then(
       (res) => {
@@ -37,7 +38,7 @@ const ViewOrders = () => {
   }
 
   function handleChangeStatus(id) {
-    orderService.changeStatus(id).then(
+    orderService.changeStatus({ status: orderStatus }, id).then(
       (res) => {
         if (res.data === "FAIL_CANCEL") {
           alert("Sorry, You can't delete a product that is already sold!");
@@ -88,7 +89,8 @@ const ViewOrders = () => {
         <table>
           <thead>
             <tr>
-              <th>Date of Order</th>
+              <th>Order Date</th>
+              <th>Shipment Date</th>
               <th>Status</th>
               <th>Billing Address</th>
               <th>Shipping Address</th>
@@ -98,11 +100,11 @@ const ViewOrders = () => {
           {orders.map((ord, index) => {
             return (
               <tbody>
-                <tr key={ord.id}>
-                  <td>{ord.name}</td>
-                  <td>{ord.model}</td>
-                  <td>{ord.serialnum}</td>
-                  <td>{ord.description}</td>
+                <tr key={ord.index}>
+                  <td>{ord.ordered_date}</td>
+                  <td>{ord.shipped_date}</td>
+                  <td>{ord.shipping_address}</td>
+                  <td>{ord.billing_address}</td>
                   <td>{ord.status}</td>
                   <td>
                     {ord.status === "ORDERED" ? (
@@ -119,23 +121,29 @@ const ViewOrders = () => {
                   </td>
                   <td>
                     {ord.status === "ORDERED" || ord.status === "SHIPPED" ? (
-                      <select name="orderStat" id="orderStat">
-                        <option value="">Select New Order Status</option>
-                        <option value="ORDERED">ORDERED</option>
-                        <option value="SHIPPED">SHIPPED</option>
-                        <option value="DELIVERED">DELIVERED</option>
-                      </select>
+                      <>
+                        <select
+                          name="orderStat"
+                          id="orderStat"
+                          onChange={statusChangeHandler}
+                          value={orderStatus.status}
+                        >
+                          <option value="">Select New Order Status</option>
+                          <option value="ORDERED">ORDERED</option>
+                          <option value="SHIPPED">SHIPPED</option>
+                          <option value="DELIVERED">DELIVERED</option>
+                        </select>
+                        <button
+                          name="change-status-btn"
+                          id="change-status-btn"
+                          onClick={() => handleChangeStatus(ord.id)}
+                        >
+                          Change Status
+                        </button>
+                      </>
                     ) : (
                       <div></div>
                     )}
-
-                    <button
-                      name="change-status-btn"
-                      id="change-status-btn"
-                      onClick={() => handleChangeStatus(ord.id)}
-                    >
-                      Change Status
-                    </button>
                   </td>
                 </tr>
               </tbody>

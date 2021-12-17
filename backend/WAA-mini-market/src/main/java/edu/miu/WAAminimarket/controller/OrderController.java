@@ -1,6 +1,6 @@
 package edu.miu.WAAminimarket.controller;
 
-import edu.miu.WAAminimarket.domain.Orders;
+import edu.miu.WAAminimarket.domain.Order;
 import edu.miu.WAAminimarket.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -15,18 +15,19 @@ public class OrderController {
     private OrderService orderService;
 
     @GetMapping
-    public List<Orders> getAllOrders(){
+    public List<Order> getAllOrders(){
         return orderService.findAll();
     }
 
     @PostMapping
-    public List<Orders> placeOrder(@RequestBody Orders order){
+    public Order placeOrder(@RequestBody Order order){
 
-        return orderService.placeOrder(order);
+        return (Order) orderService.placeOrder(order);
     }
 
     @PutMapping("/{id}")
-    public Orders cancelOrder(@PathVariable("id") Long id, @RequestBody Orders order){
+    public Order updateOrder(@PathVariable Long id, @RequestBody Order order){
+        System.out.println("*******************************");
         return orderService.updateOrder(id, order);
     }
 }
