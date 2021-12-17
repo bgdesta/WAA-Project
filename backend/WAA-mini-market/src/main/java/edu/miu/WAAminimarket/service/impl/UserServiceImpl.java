@@ -26,4 +26,9 @@ public class UserServiceImpl implements UserService {
         u.setStatus("ACTIVE");
         return userRepository.save(u);
     }
+
+    @Override
+    public User registerUser(User user) {
+        return userRepository.save(user);
+    }
 }

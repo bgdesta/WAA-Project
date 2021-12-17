@@ -1,6 +1,5 @@
 package edu.miu.WAAminimarket.helper;
 
-import edu.miu.WAAminimarket.domain.Customer;
 import edu.miu.WAAminimarket.domain.Product;
 
 import javax.persistence.CascadeType;

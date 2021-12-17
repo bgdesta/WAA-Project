@@ -25,5 +25,5 @@ public class Product {
     private String status;
 
     @ManyToOne
-    private Order order;
+    private Orders order;
 }

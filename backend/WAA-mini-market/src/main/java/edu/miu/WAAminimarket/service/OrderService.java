@@ -1,13 +1,13 @@
 package edu.miu.WAAminimarket.service;
 
-import edu.miu.WAAminimarket.domain.Order;
+import edu.miu.WAAminimarket.domain.Orders;
 
 import java.util.List;
 
 public interface OrderService {
-    List<Order> findAll();
+    List<Orders> findAll();
 
-    Order updateOrder(Long id, Order order);
+    Orders updateOrder(Long id, Orders order);
 
-    List<Order> placeOrder(Order order);
+    List<Orders> placeOrder(Orders order);
 }

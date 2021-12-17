@@ -22,14 +22,18 @@ public class UserController {
     private UserRepository userRepository;
 
     @GetMapping("/sellers/pending")
-    @CrossOrigin(origins = "*", allowedHeaders = "*")
     public List<User> getAllPendingSellers(){
         return userService.findAllPendingSellers("PENDING");
     }
 
     @PutMapping("/sellers/{id}")
     public User updateUser(@PathVariable Long id, User user){
+
         return userService.updateUser(id, user);
     }
 
+    @PostMapping
+    public User registerUser(@RequestBody User user){
+        return userService.registerUser(user);
+    }
 }

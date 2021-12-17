@@ -79,11 +79,14 @@ public class AuthController {
 		}
 
 		// Create new user's account
-		User user = new User(signUpRequest.getUsername(),
+		User user = new User(signUpRequest.getName(),
+							 signUpRequest.getPhone(),
+							 signUpRequest.getUsername(),
 							 signUpRequest.getEmail(),
 							 encoder.encode(signUpRequest.getPassword()));
 
 		String role = signUpRequest.getRole();
+		System.out.println("============================: " + role);
 		if (role == null) {
 			throw new RuntimeException("Error: Role is not found.");
 

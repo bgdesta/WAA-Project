@@ -4,8 +4,7 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.*;
 
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -18,6 +17,8 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
+    private String name;
+    private String phone;
     private String username;
     private String email;
     private String password;
@@ -28,9 +29,12 @@ public class User {
     @JoinColumn(name = "role_id")
     private Role role;
 
-//    String role;
+    @OneToMany(mappedBy = "user")
+    private List<Orders> ordersList;
 
-    public User(String username, String email, String password) {
+    public User(String name, String phone, String username, String email, String password) {
+        this.name = name;
+        this.phone = phone;
         this.username = username;
         this.password = password;
         this.email = email;
