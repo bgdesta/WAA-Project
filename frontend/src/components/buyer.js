@@ -53,11 +53,11 @@ export default function Buyer() {
   //const [totalItemCount, setTotalItemCount] = useState(6);
 
   ///////////////////////////////////////////////////
-  const addToCartHandler = (itemName, itemPrice) => {
+  const addToCartHandler = (itemName, model, serial, itemPrice) => {
     const newItem = {
       name: itemName,
-      model: "uniquemodel",
-      serialnum: "uniqueserial",
+      model: model,
+      serialnum: serial,
       unitprice: itemPrice,
     };
     const newItems = [...cart, newItem];
@@ -79,17 +79,6 @@ export default function Buyer() {
       <div>
         <h2 className="h3class">purchase products</h2>
       </div>
-
-      {/* <div className="divbuttommargin">
-        <label className="labels">Name:</label>
-        <input
-          className="inputclass"
-          value={purchase.name}
-          type="text"
-          onChange={purchaseProfileHandler}
-          name="name"
-        />
-      </div> */}
 
       <div className="divbuttommargin">
         <label className="labels">Shipping Address:</label>
@@ -133,7 +122,9 @@ export default function Buyer() {
 
         <button
           className="buttonCart"
-          onClick={() => addToCartHandler("iPhone 13 Pro", 2000)}
+          onClick={() =>
+            addToCartHandler("iPhone 13 Pro", "PNX2-iPhone13", "SN1234", 2000)
+          }
         >
           Add to Cart
         </button>
@@ -163,7 +154,14 @@ export default function Buyer() {
 
         <button
           className="buttonCart"
-          onClick={() => addToCartHandler("Samsung Galaxy M31", 2000)}
+          onClick={() =>
+            addToCartHandler(
+              "Samsung Galaxy M31",
+              "SNGX2-Samsung",
+              "SN4789",
+              3000
+            )
+          }
         >
           Add to Cart
         </button>
@@ -192,7 +190,9 @@ export default function Buyer() {
 
         <button
           className="buttonCart"
-          onClick={() => addToCartHandler("MacBook Pro", 2000)}
+          onClick={() =>
+            addToCartHandler("MacBook Pro", "SNMAC-MC2", "SN454789", 3200)
+          }
         >
           Add to Cart
         </button>
@@ -224,7 +224,9 @@ export default function Buyer() {
         <p className="gclass">price: 500</p>
         <button
           className="buttonCart"
-          onClick={() => addToCartHandler(" Apple Watch", 500)}
+          onClick={() =>
+            addToCartHandler("Apple Watch", "SNAPPL-WCH", "SN102789", 500)
+          }
         >
           Add to Cart
         </button>
@@ -253,7 +255,9 @@ export default function Buyer() {
         <p className="gclass">price: 1000</p>
         <button
           className="buttonCart"
-          onClick={() => addToCartHandler("iPhone 11", 1500)}
+          onClick={() =>
+            addToCartHandler("iPhone 11", "APP2HJ", "SN85748", 1000)
+          }
         >
           Add to Cart
         </button>
@@ -280,7 +284,9 @@ export default function Buyer() {
 
         <button
           className="buttonCart"
-          onClick={() => addToCartHandler("Mac Min", 500)}
+          onClick={() =>
+            addToCartHandler("Mac Min", "MACMIN", "SN443748", 2340)
+          }
         >
           Add to Cart
         </button>

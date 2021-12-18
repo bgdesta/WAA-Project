@@ -60,11 +60,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				.and()
 			.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
 				.and()
-			.authorizeRequests().
-				antMatchers("/api/auth/**", "/h2-console*",  "http://localhost:8080/h2-console/test.do?jsessionid=ecceebf1055eaaa6f22272115e52f568").permitAll()
-			.antMatchers("/api/test/**", "/h2-console*", "/h2-console/test.do?jsessionid=665e22342338edd3796ecad1f140207f").permitAll();
-//			.anyRequest().authenticated();
+			.authorizeRequests()
+				.antMatchers("/api/auth/**", "/h2-console*").permitAll()
+			.antMatchers("/api/test/**", "/h2-console*").permitAll()
+			.anyRequest().authenticated();
 
-//		http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
+		http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
 	}
 }

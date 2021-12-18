@@ -44,7 +44,7 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public Product findProductByModel(String model) {
-        return productRepository.findProductByModel("uniquemodel");
+        return productRepository.findProductByModel(model);
     }
 
 }

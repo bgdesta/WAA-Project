@@ -26,14 +26,15 @@ public class OrderController {
 
     @PostMapping
     public Order placeOrder(@RequestBody Order order){
-        order.getProductList().forEach(p -> {
-            Product prod = productService.findProductByModel(p.getModel());
-            if ( prod != null && p.getModel().equalsIgnoreCase((prod.getModel()))){
+        Product p;
+        for (Product prod : order.getProductList()) {
+            p = productService.findProductByModel(prod.getModel());
+            if ( p != null){
                 order.setStatus("ORDERED");
                 p.setStatus("ORDERED");
                 productService.save(p);
             }
-        }); 
+        }
         return (Order) orderService.placeOrder(order);
     }
 
