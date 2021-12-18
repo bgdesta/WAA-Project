@@ -7,3 +7,5 @@ INSERT INTO USER(id, name, phone, username, email, password, status, role_id) VA
 INSERT INTO USER(id, name, phone, username, email, password, status, role_id) VALUES (2, 'Miu Marketing', '6418195688','seller', 'seller@miu.edu', '$2a$10$nrW7iZ22MzaRQChpvapgQ.dgdQyhMAjj6cYjf7kdR6S3sbnCOxcqO', 'PENDING', 3);
 INSERT INTO USER(id, name, phone, username, email, password, status, role_id) VALUES (3, 'Elen Mark', '6418195682', 'ellen', 'ellenmark@miu.edu', '$2a$10$nrW7iZ22MzaRQChpvapgQ.dgdQyhMAjj6cYjf7kdR6S3sbnCOxcqO', 'PENDING', 3);
 INSERT INTO USER(id, name, phone, username, email, password, status, role_id) VALUES (4, 'Miu Customer', '6418195681', 'buyer', 'sarah@miu.edu', '$2a$10$nrW7iZ22MzaRQChpvapgQ.dgdQyhMAjj6cYjf7kdR6S3sbnCOxcqO', 'ACTIVE', 2);
+
+INSERT INTO PRODUCT(id, name, model, unitprice, serialnum, description, status) VALUES (1, 'Apple', 'uniquemodel', 1234, 'uniqueserial', 'Description', 'AVAILABLE')

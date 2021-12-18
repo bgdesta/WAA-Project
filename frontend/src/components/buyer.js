@@ -10,16 +10,12 @@ import applewatch from "../images/applewatch.jpg";
 
 export default function Buyer() {
   const [purchase, setPurchase] = useState({
-    name: "",
+    // name: "",
     shippingaddress: "",
     billingaddress: "",
   });
 
-  const [cart, setCart] = useState([
-  //{ itemName: "iPhoe pro 13", quantity: 1, isSelected: false },
-  // { itemName: "MacBook Pro", quantity: 3, isSelected: true },
-  // { itemName: "Imac", quantity: 2, isSelected: false },
-]);
+  const [cart, setCart] = useState([]);
 
   const purchaseProfileHandler = (e) => {
     const { name, value } = e.target;
@@ -31,27 +27,27 @@ export default function Buyer() {
 
   function placeOrderHandler(event) {
     event.preventDefault();
-
+    console.log(JSON.parse(localStorage.getItem("user")).id);
     let purchaseData = {
-      name: purchase.name,
-      shippingaddress: purchase.shippingaddress,
-      billingaddress: purchase.billingaddress,
+      user_id: JSON.parse(localStorage.getItem("user")).id,
+      // name: purchase.name,
+      shipping_address: purchase.shippingaddress,
+      billing_address: purchase.billingaddress,
+      ordered_date: new Date().toLocaleDateString(),
+      shipped_date: new Date().toLocaleDateString(),
+      productList: cart,
     };
     console.log(cart);
 
     axios
-      .post("http://localhost:8080/customers", purchaseData)
+      .post("http://localhost:8080/orders", purchaseData)
       .then((res) => {
-        console.log(res.status);
-        console.log(res.data);
+        alert("Ordered placed!");
       })
       .catch((error) => {
         console.log("Failed to write data to DB! " + error);
       });
   }
-  
-
- 
 
   //const [inputValue, setInputValue] = useState("");
   //const [totalItemCount, setTotalItemCount] = useState(6);
@@ -59,22 +55,23 @@ export default function Buyer() {
   ///////////////////////////////////////////////////
   const addToCartHandler = (itemName, itemPrice) => {
     const newItem = {
-      itemName: itemName,
-      price: itemPrice,
-      quantity: 1,
+      name: itemName,
+      model: "uniquemodel",
+      serialnum: "uniqueserial",
+      unitprice: itemPrice,
     };
     const newItems = [...cart, newItem];
     //cart = newItems
-    Object.assign(cart, newItems);
-    //setCart(newItems);
+    // Object.assign(cart, newItems);
+    setCart(newItems);
   };
-  /////////////////////////////////////////////
 
-  function removeFromCart(productName){
-
-    cart.splice(cart.findIndex(item => item.itemName === productName), 1)
-    console.log(cart)
-
+  function removeFromCart(productName) {
+    cart.splice(
+      cart.findIndex((item) => item.itemName === productName),
+      1
+    );
+    console.log(cart);
   }
 
   return (
@@ -83,7 +80,7 @@ export default function Buyer() {
         <h2 className="h3class">purchase products</h2>
       </div>
 
-      <div className="divbuttommargin">
+      {/* <div className="divbuttommargin">
         <label className="labels">Name:</label>
         <input
           className="inputclass"
@@ -92,7 +89,7 @@ export default function Buyer() {
           onChange={purchaseProfileHandler}
           name="name"
         />
-      </div>
+      </div> */}
 
       <div className="divbuttommargin">
         <label className="labels">Shipping Address:</label>
@@ -143,12 +140,10 @@ export default function Buyer() {
 
         <button
           className="buttonCart"
-          onClick={() =>removeFromCart("iPhone 13 Pro")}
+          onClick={() => removeFromCart("iPhone 13 Pro")}
         >
           Remove from Cart
         </button>
-
-        
       </div>
 
       <div className="divbuttommargin">
@@ -175,12 +170,10 @@ export default function Buyer() {
 
         <button
           className="buttonCart"
-          onClick={() =>removeFromCart("Samsung Galaxy M31")}
+          onClick={() => removeFromCart("Samsung Galaxy M31")}
         >
           Remove from Cart
         </button>
-
-
       </div>
 
       <div className="divbuttommargin">
@@ -206,7 +199,7 @@ export default function Buyer() {
 
         <button
           className="buttonCart"
-          onClick={() =>removeFromCart("MacBook Pro")}
+          onClick={() => removeFromCart("MacBook Pro")}
         >
           Remove from Cart
         </button>
@@ -237,11 +230,10 @@ export default function Buyer() {
         </button>
         <button
           className="buttonCart"
-          onClick={() =>removeFromCart(" Apple Watch")}
+          onClick={() => removeFromCart(" Apple Watch")}
         >
           Remove from Cart
         </button>
-
       </div>
 
       <div className="divbuttommargin">
@@ -295,15 +287,14 @@ export default function Buyer() {
 
         <button
           className="buttonCart"
-          onClick={() =>removeFromCart("Mac Min")}
+          onClick={() => removeFromCart("Mac Min")}
         >
           Remove from Cart
         </button>
       </div>
 
       <div>
-        <button className="clickbutton" 
-        onClick={placeOrderHandler}>
+        <button className="clickbutton" onClick={placeOrderHandler}>
           Place Order
         </button>
       </div>

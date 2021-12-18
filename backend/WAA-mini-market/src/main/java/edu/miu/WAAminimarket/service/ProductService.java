@@ -13,4 +13,5 @@ public interface ProductService {
     Product updateProduct(Long id, Product prod);
 
     String deleteById(Long id);
+    Product findProductByModel(String model);
 }

@@ -41,4 +41,10 @@ public class ProductServiceImpl implements ProductService {
         productRepository.deleteById(id);
         return "Item successfully deleted!";
     }
+
+    @Override
+    public Product findProductByModel(String model) {
+        return productRepository.findProductByModel("uniquemodel");
+    }
+
 }
